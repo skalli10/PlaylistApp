@@ -1,0 +1,17 @@
+bin
+.classpath
+.project
+.settings
+.idea
+*.pem
+*.pyc
+*.log
+*~
+.DS_Store
+target
+test-output/
+logs/
+/build.out
+/.pydevproject
+/.springBeans
+/.checkstyle

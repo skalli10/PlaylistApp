@@ -1,0 +1,100 @@
+http://www.javawebtutor.com/articles/web-services/rest/restful-web-services-intro.php
+REST stands for Representational State Transfer.REST is used to build Web services that are lightweight, maintainable, and scalable in nature. A service which is built on the REST architecture is called a RESTful service.REST uses HTTP Protocol for data communication.
+
+REST was introduced and defined by Roy Fielding in 2000. The idea is rather than using complex mechanism such as CORBA,RPC or SOAP to connect applications, simple HTTP protocol is used.
+
+RESTful application use HTTP requests to send data(Create/Update),read data and delete data. Thus REST uses HTTP for all four CRUD operations.
+
+REST is a way to access resources which lie on a particular server. For example, you could have a server that could be hosting important documents or pictures or videos. All of these are an example of resources. If a client, say a web browser needs any of these resources, it has to send a request to the server to access these resources. Now REST defines a way on how these resources can be accessed.
+
+KEY ELEMENTS OF A RESTFUL IMPLEMENTATION
+The key elements of a RESTful implementation are as follows:
+
+Resources – Resources is the key element of Restful Services. Let us assume that a web application on a server has records of millions of employees. Let's assume the URL of the web application is http://example.javawebtutor.com Now in order to access an employee record resource via REST, one can issue the command http://example.javawebtutor.com/employee/101 - This command tells the web server to provide the details of the employee whose employee ID is 101.
+
+Request Verbs - These describe what you want to do with the resource. A browser issues a GET verb to instruct the endpoint it wants to get data. However there are many other verbs available including things like POST, PUT, and DELETE. So in the case of the example http://example.javawebtutor.com/employee/101 , the web browser is actually issuing a GET Verb because it wants to get the details of the employee record.
+
+Request Headers – These are additional instructions sent with the request. These might define the type of response required or the authorization details.
+
+Request Body - Data is sent with the request. Data is normally sent in the request when a POST request is made to the REST web service. In a POST call, the client actually tells the web service that it wants to add a resource to the server. Hence, the request body would have the details of the resource which is required to be added to the server.
+
+Response Body – This is the main body of the response. So in our example, if we were to query the web server via the request http://example.javawebtutor.com/employee/101 , the web server might return an XML document with all the details of the employee in the Response Body.
+
+Response Status codes – These codes are the general codes which are returned along with the response from the web server. An example is the code 200 which is normally returned if there is no error when returning a response to the client.
+
+RESTful Resources
+In REST based architecture everything is a resource. In a REST architecture we typically have a REST server which provides access to the resources and a REST client which accesses and modify REST resources. In REST, the web services are viewed as resources and can be identified by their URLs(URI). REST allows that resources have different representations, e.g., text, XML, JSON etc. The REST client can ask for a specific representation via the HTTP protocol . Web service client applications use HTTP method such as GET, POST, PUT or DELETE to manipulate the resource or collection of resources.
+
+Representation
+The representation of resources is what is sent back between clients and servers.A representation can take various forms, such as an image, a text file, or an XML stream or a JSON stream.You can use any format for representing the resources, as REST does not put a restriction on the format of a representation.
+JSON representation of a resource.
+{
+    "ID": "101",
+    "Name": "Mukesh",
+    "Email": "admin@javawebtutor.com",
+    "Country": "India"
+}
+
+HTTP Methods:
+Following HTTP methods are commonly used in REST based architecture.we can map CRUD actions to the HTTP methods POST, GET, PUT, and DELETE as follows:
+
+GET - Retrieve Data
+POST- Create/Insert Data
+PUT- Update Data
+DELETE- Delete Data
+
+RESTFul web services
+A RESTFul web services are based on HTTP methods and the concept of REST. A RESTFul web service typically defines the base URI for the services, the supported MIME-types (XML, text, JSON, user-defined, ...) and the set of operations (POST, GET, PUT, DELETE) which are supported.
+
+What is JAX-RS ?
+Java defines REST support via the Java Specification Request (JSR) 311. This specification is called JAX-RS (The Java API for RESTful Web Services).
+
+JAX-RS stands for Java API for RESTful Web Services, is a set of APIs to develop REST services. It make developers to develop REST web application easily.JAX-RS makes heavy use of annotations  to define the REST relevance of Java classes.
+
+There are two main implementation of JAX-RS API: Jersey & RESTEasy.
+
+Following are the commonly used annotations in JAX-RS to map a resource as a web service resource.
+@Path:	The @Path annotation’s value is a relative URI path indicating where the Java class will be hosted: for example, /helloworld. You can also embed variables in the URIs to make a URI path template. For example, you could ask for the name of a user and pass it to the application as a variable in the URI: /helloworld/{username}.
+@GET:	This annotation indicates that the following method should respond to the HTTP GET request only.HTTP Get request, used to fetch resource.
+@POST:	This annotation indicates that the following method should respond to the HTTP POST request only.HTTP POST request is used to create/update resource.
+@PUT:	This annotation indicates that the following method should respond to the HTTP PUT request only.HTTP PUT request is used to create resource.
+@DELETE:	This annotation indicates that the following method should respond to the HTTP DELETE request only.HTTP DELETE request is used to delete resource.
+@HEAD:	This annotation indicates that the following method should respond to the HTTP HEAD request only.HTTP HEAD request is used to get status of method availability.
+@Produces(MediaTypes.TEXT_PLAIN[,more –types]):	It defines which MIME type is delivered by a method annotated with @GET. In the example text("text/plain") is produced.Other examples would be "application/xml" or "application/json"
+@Consumes( type[, more-types]):	It defines MIME type which is consumed by this method.
+@PathParam:	Used to inject values from the URL into a method parameter. For example you can inject id of the resource into the method to get the correct object.
+
+JAX-RS and Jersey
+Jersey is the open source reference implementation of Java JAX-RS specification. It provides a Java library using which we can easily create RESTful web services in Java platform. JAX-RS / Jersey supports JAXB based XML bindings.
+
+JAX-RS & Jersey Example using Maven and Eclipse
+Step 1 : Create Web Application Project using Maven Template
+Step 2 : Eclipse IDE integration
+Step 3 : Import the Project into eclipse
+Step 4 : Update pom.xml file
+Step 5 : Create Java directory :
+Step 6 : Add java directory to classpath of the Project :
+Step 7 : Create REST Service :
+Step 8 : Create Web.xml configuration File
+Step 9 : Run the application 
+
+RESTful Web Services (JAX-RS) @Path URI Matching Example
+Any Java class that you want to be recognized as JAX-RS services must have @Path annotation.
+
+In JAX-RS, @Path annotation is used to bind URI pattern to a Java method. Java Class annotated with @Path have at least one method annotated with @Path or a request method designator annotation such as @GET, @POST.
+
+The @Path annotation must exist on either the class and/or a resource method. If it exists on both the class and method, the relative path to the resource method is a concatenation of the class and method. As you can see our servlet is mapped to /rest/ URI pattern. So the basic structure of the URIs used in this example will have the form :
+http://localhost:8080/RESTPathExample/rest/....
+URIs in @Path are defined in two way:
+@Path ("uri")
+@Path ("uri/{variable[:regular-expression]}")
+In JAX-RS @Path is used on method level to determinate the URI path to which the method responds.
+Normal URI matching:
+Dynamic URI with parameter matching:
+URI Matching and Regular Expression :
+
+In JAX-RS @Path is used on method level to determinate the URI path to which the method responds.@PathParam is used to retrieve the value of an URI path variable. In other words you can use @PathParem to inject the value of URI parameter that defined in @Path expression, into method input parameters.
+1 . Using @PathParam with single parameter
+2 . Using @PathParam with multiple parameters
+
+
